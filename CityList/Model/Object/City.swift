@@ -11,10 +11,10 @@ import UIKit
 final class City: NSObject, Decodable {
     let country: String
     let name: String
-    let id: String
+    let id: Int
     let location: Location
     
-    init(country: String, name: String, id: String, location: Location) {
+    init(country: String, name: String, id: Int, location: Location) {
         self.country = country
         self.name = name
         self.id = id
