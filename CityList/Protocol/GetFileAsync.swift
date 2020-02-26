@@ -1,5 +1,5 @@
 //
-//  FileAsyncGet.swift
+//  GetFileAsync.swift
 //  CityList
 //
 //  Created by Elano on 26/02/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FileAsyncGet {
+protocol GetFileAsync {
     associatedtype T
     
     func get(completionHandler: @escaping (Result<T, FileError>) -> Void)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class File<T: Decodable>: NSObject, FileAsyncGet {
+final class File<T: Decodable>: NSObject, GetFileAsync {
 
     let name: String
     let type: String
