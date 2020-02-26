@@ -18,6 +18,9 @@
 		03F8BCEC2405EE8D009FA31D /* Indexsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCEB2405EE8D009FA31D /* Indexsable.swift */; };
 		03F8BCEE2405F357009FA31D /* ArrayIndexTrieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCED2405F357009FA31D /* ArrayIndexTrieTests.swift */; };
 		03F8BCF22405F3C9009FA31D /* MockIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCF12405F3C9009FA31D /* MockIndexable.swift */; };
+		03F8BCF524060171009FA31D /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BCF424060171009FA31D /* cities.json */; };
+		03F8BCF924060219009FA31D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCF824060219009FA31D /* City.swift */; };
+		03F8BCFB24060545009FA31D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCFA24060545009FA31D /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		03F8BCEB2405EE8D009FA31D /* Indexsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indexsable.swift; sourceTree = "<group>"; };
 		03F8BCED2405F357009FA31D /* ArrayIndexTrieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIndexTrieTests.swift; sourceTree = "<group>"; };
 		03F8BCF12405F3C9009FA31D /* MockIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockIndexable.swift; sourceTree = "<group>"; };
+		03F8BCF424060171009FA31D /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		03F8BCF824060219009FA31D /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		03F8BCFA24060545009FA31D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,8 @@
 		03F8BCC02405E3B6009FA31D /* CityList */ = {
 			isa = PBXGroup;
 			children = (
+				03F8BCF624060180009FA31D /* Model */,
+				03F8BCF32406015E009FA31D /* Json */,
 				03F8BCEA2405EE61009FA31D /* Protocol */,
 				03F8BCE62405E574009FA31D /* Helper */,
 				03F8BCE52405E409009FA31D /* Storyboard */,
@@ -175,6 +183,31 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		03F8BCF32406015E009FA31D /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				03F8BCF424060171009FA31D /* cities.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		03F8BCF624060180009FA31D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03F8BCF724060191009FA31D /* Object */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03F8BCF724060191009FA31D /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				03F8BCF824060219009FA31D /* City.swift */,
+				03F8BCFA24060545009FA31D /* Location.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F8BCF524060171009FA31D /* cities.json in Resources */,
 				03F8BCCE2405E3B8009FA31D /* LaunchScreen.storyboard in Resources */,
 				03F8BCCB2405E3B8009FA31D /* Assets.xcassets in Resources */,
 				03F8BCC92405E3B6009FA31D /* Main.storyboard in Resources */,
@@ -278,9 +312,11 @@
 			files = (
 				03F8BCC62405E3B6009FA31D /* ViewController.swift in Sources */,
 				03F8BCEC2405EE8D009FA31D /* Indexsable.swift in Sources */,
+				03F8BCF924060219009FA31D /* City.swift in Sources */,
 				03F8BCC22405E3B6009FA31D /* AppDelegate.swift in Sources */,
 				03F8BCE92405E618009FA31D /* ArrayIndexTrie.swift in Sources */,
 				03F8BCC42405E3B6009FA31D /* SceneDelegate.swift in Sources */,
+				03F8BCFB24060545009FA31D /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
