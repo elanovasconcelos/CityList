@@ -10,6 +10,8 @@ import UIKit
 
 final class CityTableViewCell: BaseTableViewCell<CityCellViewModel> {
 
+    override class var identifier: String { return "CityTableViewCell" }
+    
     @IBOutlet var cityTitleLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     
