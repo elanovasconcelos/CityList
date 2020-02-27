@@ -14,7 +14,7 @@ protocol CityListViewModelDelegate: class {
 
 final class CityListViewModel: NSObject {
 
-    private lazy var allModels = Observable<[CityCellViewModel]>([])
+    private lazy var allModels = [CityCellViewModel]()
     private(set) lazy var models = Observable<[CityCellViewModel]>([])
     
     weak var delegate: CityListViewModelDelegate?
@@ -37,8 +37,8 @@ final class CityListViewModel: NSObject {
             case .failure(let error):
                 self.delegate?.cityListViewModel(self, didReceive: error)
             case .success(let cities):
-                self.allModels.value = cities.map({ CityCellViewModel(city: $0) }).sorted()
-                self.models.value = self.allModels.value
+                self.allModels = cities.map({ CityCellViewModel(city: $0) }).sorted()
+                self.models.value = self.allModels
             }
         }
     }
