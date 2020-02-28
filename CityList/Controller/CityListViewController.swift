@@ -39,6 +39,15 @@ final class CityListViewController: BaseViewController<CityTableViewCell, CityCe
     override func searched(for text: String) {
         viewModel.filter = text
     }
+    
+    override func rowSelected(at indexPath: IndexPath) {
+        let cellModel = viewModel.models.value[indexPath.row]
+        let controller = MapViewController(name: cellModel.title, location: cellModel.location)
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+        closeKeyboard()
+    }
 }
 
 //MARK: - CityListViewModelDelegate
