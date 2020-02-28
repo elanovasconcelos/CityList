@@ -18,6 +18,7 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
 
         newTableView.rowHeight = UITableView.automaticDimension
         newTableView.estimatedRowHeight = 44
+        newTableView.tableFooterView = UIView()
         
         return newTableView
     }()

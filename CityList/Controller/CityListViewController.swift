@@ -37,7 +37,6 @@ final class CityListViewController: BaseViewController<CityTableViewCell, CityCe
     
     //MARK: -
     override func searched(for text: String) {
-        print("text: \(text)")
         viewModel.filter = text
     }
 }
