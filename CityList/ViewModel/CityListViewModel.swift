@@ -16,12 +16,23 @@ final class CityListViewModel: NSObject {
 
     private lazy var allModels = [CityCellViewModel]()
     private(set) lazy var models = Observable<[CityCellViewModel]>([])
+    private let trie: ArrayIndexTrie
     
     weak var delegate: CityListViewModelDelegate?
-    var filter: String = "" { didSet { filterChanged() } }
+    var filter: String = "" {
+        didSet {
+            if oldValue != filter {
+                filterChanged()
+            }
+        }
+    }
     
-    init(file: GetCityFileAsync = CityFile(), delegate: CityListViewModelDelegate? = nil) {
+    init(file: GetCityFileAsync = CityFile(),
+         delegate: CityListViewModelDelegate? = nil,
+         trie: ArrayIndexTrie = ArrayIndexTrie()) {
+        
         self.delegate = delegate
+        self.trie = trie
         
         super.init()
         
@@ -38,12 +49,37 @@ final class CityListViewModel: NSObject {
                 self.delegate?.cityListViewModel(self, didReceive: error)
             case .success(let cities):
                 self.allModels = cities.map({ CityCellViewModel(city: $0) }).sorted()
-                self.models.value = self.allModels
+                self.setupTrie()
+                //self.models.value = self.allModels
             }
+        }
+    }
+    
+    private func setupTrie() {
+        trie.insert(sortedArray: allModels) { [weak self] in
+            guard let self = self else { return }
+
+            self.updateModelValue(with: self.allModels)
         }
     }
     
     private func filterChanged() {
         
+        if filter.isEmpty {
+            self.updateModelValue(with: self.allModels)
+            return
+        }
+        
+        let indexes = trie.indexes(for: filter)
+
+        if indexes.start != ArrayIndexTrie.IndexNotFound {
+            updateModelValue(with: Array(self.allModels[indexes.start ... indexes.end]))
+        }else {
+            updateModelValue(with: [])
+        }
+    }
+    
+    private func updateModelValue(with value: [CityCellViewModel]) {
+        self.models.value = value
     }
 }
