@@ -12,10 +12,11 @@ final class CityListViewController: BaseViewController<CityTableViewCell, CityCe
 
     private let viewModel: CityListViewModel
     
+    //MARK: -
     init(viewModel: CityListViewModel) {
         self.viewModel = viewModel
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(enableSearch: true)
         
         setup()
     }
@@ -24,12 +25,20 @@ final class CityListViewController: BaseViewController<CityTableViewCell, CityCe
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: -
     private func setup() {
+        title = "Cities"
         
         viewModel.delegate = self
         viewModel.models.valueChanged = { [weak self] items in
             self?.items = items
         }
+    }
+    
+    //MARK: -
+    override func searched(for text: String) {
+        print("text: \(text)")
+        viewModel.filter = text
     }
 }
 

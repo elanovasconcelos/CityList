@@ -8,8 +8,10 @@
 
 import UIKit
 
-class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
 
+    private lazy var searchController = UISearchController(searchResultsController: nil)
+    private let enableSearch: Bool
     private let tableView: UITableView = {
        
         let newTableView = UITableView(frame: .zero)
@@ -28,11 +30,23 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     }
     
     //MARK: -
+    init(enableSearch: Bool = false) {
+        self.enableSearch = enableSearch
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupController()
         setupTableView()
+        setupSearch()
     }
     
     //MARK: -
@@ -53,6 +67,19 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
                               trailing: view.safeAreaLayoutGuide.trailingAnchor)
     }
 
+    private func setupSearch() {
+        if !enableSearch {
+            return
+        }
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Cities"
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
     //MARK: -
     func hideTable(_ hide: Bool) {
         tableView.isHidden = hide
@@ -65,6 +92,10 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     }
     
     func rowSelected(at indexPath: IndexPath) {
+        
+    }
+    
+    func searched(for text: String) {
         
     }
     
@@ -83,5 +114,11 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         rowSelected(at: indexPath)
+    }
+    
+    //MARK: - UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        searched(for: searchBar.text ?? "")
     }
 }
