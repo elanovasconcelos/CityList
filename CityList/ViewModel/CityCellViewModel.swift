@@ -13,8 +13,10 @@ final class CityCellViewModel: NSObject, Indexable, Comparable {
     let title: String
     let subtitle: String
     let key: String
+    let location: Location
     
     init(city: City) {
+        location = city.location
         title = city.name + ", " + city.country
         subtitle = "latitude: \(city.location.latitude) longitude: \(city.location.longitude)"
         key = title.lowercased()
