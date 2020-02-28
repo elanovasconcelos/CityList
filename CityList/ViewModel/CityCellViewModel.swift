@@ -17,7 +17,7 @@ final class CityCellViewModel: NSObject, Indexable, Comparable {
     init(city: City) {
         title = city.name + ", " + city.country
         subtitle = "latitude: \(city.location.latitude) longitude: \(city.location.longitude)"
-        key = title
+        key = title.lowercased()
     }
     
     //MARK: - Comparable
