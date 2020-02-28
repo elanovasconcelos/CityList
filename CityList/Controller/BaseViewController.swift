@@ -62,10 +62,7 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(nibNameAndIdentifier: T.identifier)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                              leading: view.safeAreaLayoutGuide.leadingAnchor,
-                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                              trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        tableView.fullAnchor(view: view)
     }
 
     private func setupSearch() {
@@ -89,6 +86,12 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     func reloadTable() {
         ThreadHelper.main {
             self.tableView.reloadData()
+        }
+    }
+    
+    func closeKeyboard() {
+        ThreadHelper.main {
+            self.tableView.endEditing(false)
         }
     }
     

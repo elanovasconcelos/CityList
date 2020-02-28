@@ -47,4 +47,11 @@ extension UIView {
             trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
         }
     }
+    
+    func fullAnchor(view: UIView) {
+        anchor(top: view.safeAreaLayoutGuide.topAnchor,
+               leading: view.safeAreaLayoutGuide.leadingAnchor,
+               bottom: view.safeAreaLayoutGuide.bottomAnchor,
+               trailing: view.safeAreaLayoutGuide.trailingAnchor)
+    }
 }
