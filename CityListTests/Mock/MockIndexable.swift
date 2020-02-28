@@ -9,11 +9,15 @@
 import UIKit
 @testable import CityList
 
-final class MockIndexable: NSObject, Indexable {
+final class MockIndexable: NSObject, Indexable, Comparable {
     
     let key: String
     
     init(_ key: String) {
-        self.key = key
+        self.key = key.lowercased()
+    }
+    
+    static func < (lhs: MockIndexable, rhs: MockIndexable) -> Bool {
+        return lhs.key < rhs.key
     }
 }
