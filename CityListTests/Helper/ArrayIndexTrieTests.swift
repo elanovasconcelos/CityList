@@ -20,7 +20,7 @@ class ArrayIndexTrieTests: XCTestCase {
     }
 
     func testInsert() {
-        let array = [MockIndexable("abc"), MockIndexable("bcd"), MockIndexable("bcda")]
+        let array = sortedArray(["abc", "bcd", "bcda"])
         let trie = ArrayIndexTrie()
         let expectation = self.expectation(description: "insert")
         
@@ -42,7 +42,36 @@ class ArrayIndexTrieTests: XCTestCase {
         
         waitForExpectations(timeout: 1)
     }
-
     
-
+    func testStartEndIndexes() {
+        let array = sortedArray(["abc", "abcd", "bc", "bcd", "bcda", "c", "cd", "ce"])
+        let trie = ArrayIndexTrie()
+        let expectation = self.expectation(description: "insert")
+        
+        trie.insert(sortedArray: array) {
+            
+            let indexesA = trie.indexes(for: "a")
+            let indexesB = trie.indexes(for: "Bc")
+            let indexesC = trie.indexes(for: "cd")
+            let indexesD = trie.indexes(for: "ced")
+            
+            XCTAssertEqual(indexesA.start, 0)
+            XCTAssertEqual(indexesA.end, 1)
+            XCTAssertEqual(indexesB.start, 2)
+            XCTAssertEqual(indexesB.end, 4)
+            XCTAssertEqual(indexesC.start, 6)
+            XCTAssertEqual(indexesC.end, 6)
+            XCTAssertEqual(indexesD.start, ArrayIndexTrie.IndexNotFound)
+            XCTAssertEqual(indexesD.end, ArrayIndexTrie.IndexNotFound)
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1)
+    }
+    
+    
+    func sortedArray(_ values: [String]) -> [MockIndexable] {
+        return values.map({ MockIndexable($0) }).sorted()
+    }
 }

@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+typealias NodeIndex = (start: Int, end: Int)
+
 final class ArrayIndexTrie: NSObject {
     static let IndexNotFound = -1
     
@@ -15,7 +18,7 @@ final class ArrayIndexTrie: NSObject {
     private lazy var queue = DispatchQueue(label: "com.elano.ArrayIndexTrie")
     
     override init() {
-        root = Node(value: Character(" "), index: 0)
+        root = Node(value: Character(" "), index: 0, endIndex: 0)
     }
     
     /// Insert all the keys of the Indexable protocol in the Trie asynchronously . All previous values will be lost.
@@ -32,13 +35,27 @@ final class ArrayIndexTrie: NSObject {
                 index += 1
             }
             
+            if !sortedArray.isEmpty {
+                self?.root.endIndex = index - 1
+            }
+            
             completionHandler()
         }
     }
     
+    /// Returns the start and end indexes of the sorted array.
+    /// - Parameter word: A string prefix to be searched in the trie
     func index(for word: String) -> Int {
+        return indexes(for: word).start
+    }
+    
+    /// Returns the start and end indexes of the sorted array.
+    /// The start index is the first index of the array with the prefix.
+    /// The end index is the last index of the array with the prefix.
+    /// - Parameter word: A string prefix to be searched in the trie
+    func indexes(for word: String) -> NodeIndex {
         if word.isEmpty {
-            return 0
+            return root.indexes
         }
         
         var currentNode = root
@@ -46,11 +63,11 @@ final class ArrayIndexTrie: NSObject {
             if let node = currentNode.children[character] {
                 currentNode = node
             }else {
-                return ArrayIndexTrie.IndexNotFound
+                return (start: ArrayIndexTrie.IndexNotFound, end: ArrayIndexTrie.IndexNotFound)
             }
         }
         
-        return currentNode.index
+        return currentNode.indexes
     }
     
     func reset() {
@@ -63,6 +80,7 @@ final class ArrayIndexTrie: NSObject {
         for character in word.lowercased() {
           if let childNode = currentNode.children[character] {
             currentNode = childNode
+            currentNode.endIndex = index
           } else {
             currentNode.add(value: character, index: index)
             currentNode = currentNode.children[character]!
@@ -77,12 +95,14 @@ extension ArrayIndexTrie {
         let value: Character
         lazy var children = [Character: Node]()
         let index: Int
+        var endIndex: Int
         
-        init(value: Character, index: Int) {
+        init(value: Character, index: Int, endIndex: Int) {
             self.value = value
             self.index = index
+            self.endIndex = endIndex
             
-            print("node: \(value), index: \(index)")
+            //print("node: \(value), index: \(index)")
         }
         
         func add(value: Character, index: Int) {
@@ -90,7 +110,11 @@ extension ArrayIndexTrie {
                 return
             }
             
-            children[value] = Node(value: value, index: index)
+            children[value] = Node(value: value, index: index, endIndex: index)
+        }
+        
+        var indexes: NodeIndex {
+            return (start: index, end: endIndex)
         }
     }
 }
