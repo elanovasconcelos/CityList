@@ -52,7 +52,11 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     
     //MARK: -
     private func setupController() {
-        view.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
     }
     
     private func setupTableView() {
@@ -69,6 +73,9 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
         if !enableSearch {
             return
         }
+        
+        //fix the searchController color for navigationBar.isTranslucent = false
+        extendedLayoutIncludesOpaqueBars = true
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
