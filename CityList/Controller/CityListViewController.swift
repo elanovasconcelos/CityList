@@ -29,9 +29,15 @@ final class CityListViewController: BaseViewController<CityTableViewCell, CityCe
     private func setup() {
         title = "Cities"
         
+        setupViewModel()
+        showActivityIndicator()
+    }
+    
+    private func setupViewModel() {
         viewModel.delegate = self
         viewModel.models.valueChanged = { [weak self] items in
             self?.items = items
+            self?.hideActivityIndicator()
         }
     }
     

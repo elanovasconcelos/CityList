@@ -22,6 +22,14 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
         
         return newTableView
     }()
+    private let activityIndicator: UIActivityIndicatorView = {
+       
+        let newIndicatorView = UIActivityIndicatorView(style: .white)
+        
+        newIndicatorView.color = .systemGray
+        
+        return newIndicatorView
+    }()
     
     //MARK: -
     var items = [U]() {
@@ -45,9 +53,7 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupController()
-        setupTableView()
-        setupSearch()
+        setup()
     }
     
     //MARK: -
@@ -57,6 +63,13 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
         } else {
             view.backgroundColor = .white
         }
+    }
+    
+    private func setup() {
+        setupController()
+        setupTableView()
+        setupSearch()
+        setupIndicator()
     }
     
     private func setupTableView() {
@@ -83,6 +96,27 @@ class BaseViewController<T: BaseTableViewCell<U>, U>: UIViewController, UITableV
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    private func setupIndicator() {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.centetAnchor(view: view)
+    }
+    
+    func showActivityIndicator() {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+    }
+    
+    func hideActivityIndicator() {
+        
+        if !activityIndicator.isAnimating {
+            return
+        }
+        
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
     
     //MARK: -
