@@ -62,7 +62,24 @@ class ArrayIndexTrieTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
+    func testReset() {
+        let array = sortedArray(["abc", "bcd", "bcda"])
+        let trie = ArrayIndexTrie()
+        let expectation = self.expectation(description: "reset")
+        
+        trie.insert(sortedArray: array) {
+            
+            XCTAssertEqual(trie.index(for: "a"), 0)
+            trie.reset()
+            XCTAssertEqual(trie.index(for: "a"), ArrayIndexTrie.IndexNotFound)
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1)
+    }
     
+    //MARK: - 
     func sortedArray(_ values: [String]) -> [MockIndexable] {
         return values.map({ MockIndexable($0) }).sorted()
     }
