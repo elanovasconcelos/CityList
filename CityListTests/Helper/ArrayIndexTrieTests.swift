@@ -79,7 +79,7 @@ class ArrayIndexTrieTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
-    //MARK: - 
+    //MARK: -
     func sortedArray(_ values: [String]) -> [MockIndexable] {
         return values.map({ MockIndexable($0) }).sorted()
     }

@@ -29,7 +29,6 @@
 		03F8BCC62405E3B6009FA31D /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCC52405E3B6009FA31D /* CityListViewController.swift */; };
 		03F8BCCB2405E3B8009FA31D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BCCA2405E3B8009FA31D /* Assets.xcassets */; };
 		03F8BCCE2405E3B8009FA31D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03F8BCCC2405E3B8009FA31D /* LaunchScreen.storyboard */; };
-		03F8BCD92405E3B9009FA31D /* CityListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCD82405E3B9009FA31D /* CityListTests.swift */; };
 		03F8BCE92405E618009FA31D /* ArrayIndexTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCE82405E618009FA31D /* ArrayIndexTrie.swift */; };
 		03F8BCEC2405EE8D009FA31D /* Indexsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCEB2405EE8D009FA31D /* Indexsable.swift */; };
 		03F8BCEE2405F357009FA31D /* ArrayIndexTrieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCED2405F357009FA31D /* ArrayIndexTrieTests.swift */; };
@@ -75,7 +74,6 @@
 		03F8BCCD2405E3B8009FA31D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03F8BCCF2405E3B8009FA31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03F8BCD42405E3B9009FA31D /* CityListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03F8BCD82405E3B9009FA31D /* CityListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTests.swift; sourceTree = "<group>"; };
 		03F8BCDA2405E3B9009FA31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03F8BCE82405E618009FA31D /* ArrayIndexTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIndexTrie.swift; sourceTree = "<group>"; };
 		03F8BCEB2405EE8D009FA31D /* Indexsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indexsable.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				0343F77A240AB98200EA3BE9 /* ViewModel */,
 				03F8BCF02405F3B4009FA31D /* Mock */,
 				03F8BCEF2405F35C009FA31D /* Helper */,
-				03F8BCD82405E3B9009FA31D /* CityListTests.swift */,
 				03F8BCDA2405E3B9009FA31D /* Info.plist */,
 			);
 			path = CityListTests;
@@ -437,7 +434,6 @@
 				03F8BCF22405F3C9009FA31D /* MockIndexable.swift in Sources */,
 				0343F783240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift in Sources */,
 				0343F77E240AB9D600EA3BE9 /* MockGetCityFileAsync.swift in Sources */,
-				03F8BCD92405E3B9009FA31D /* CityListTests.swift in Sources */,
 				0343F77C240AB9A500EA3BE9 /* CityListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
