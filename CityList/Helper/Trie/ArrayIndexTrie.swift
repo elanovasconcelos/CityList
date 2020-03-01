@@ -11,6 +11,9 @@ import UIKit
 
 typealias NodeIndex = (start: Int, end: Int)
 
+/// The Trie is used to organize the start and end indexes of a sorted array's prefix.
+/// It takes time to create it, but the search for the indexes has a constant time complexity or
+/// to be more especific, a O(k) complexity, k equal to the size of the alphabet used.
 final class ArrayIndexTrie: NSObject {
     static let IndexNotFound = -1
     
@@ -21,7 +24,7 @@ final class ArrayIndexTrie: NSObject {
         root = Node(value: Character(" "), index: 0, endIndex: 0)
     }
     
-    /// Insert all the keys of the Indexable protocol in the Trie asynchronously . All previous values will be lost.
+    /// Inserts all the keys of the Indexable protocol in the Trie asynchronously. All previous values will be lost.
     /// - Parameter sortedArray: A sorted arry of string
     /// - Parameter completionHandler: Called after finish inserting the array
     func insert(sortedArray: [Indexable], completionHandler: @escaping () -> Void) {
@@ -43,8 +46,8 @@ final class ArrayIndexTrie: NSObject {
         }
     }
     
-    /// Returns the start and end indexes of the sorted array.
-    /// - Parameter word: A string prefix to be searched in the trie
+    /// Returns the start index of the sorted array.
+    /// - Parameter word: A string prefix to be searched in the trie.
     func index(for word: String) -> Int {
         return indexes(for: word).start
     }
@@ -52,6 +55,8 @@ final class ArrayIndexTrie: NSObject {
     /// Returns the start and end indexes of the sorted array.
     /// The start index is the first index of the array with the prefix.
     /// The end index is the last index of the array with the prefix.
+    ///
+    /// O(1) or O(k), k equals the used alphabet
     /// - Parameter word: A string prefix to be searched in the trie
     func indexes(for word: String) -> NodeIndex {
         if word.isEmpty {
@@ -70,6 +75,8 @@ final class ArrayIndexTrie: NSObject {
         return currentNode.indexes
     }
     
+    
+    /// Removes all the prefixes
     func reset() {
         root.children.removeAll()
     }
