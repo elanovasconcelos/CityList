@@ -93,9 +93,25 @@ class CityListViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
+    func testError() {
+        let expectation = self.expectation(description: "delegate")
+        let mock = MockGetCityFileAsync(cities: City.debugArray(), sendError: true)
+        let viewModeldelegate = MockCityListViewModelDelegate { (delegate) in
+            
+            XCTAssertEqual(delegate.callCount, 1)
+            XCTAssertEqual(delegate.error, FileError.data)
+            
+            expectation.fulfill()
+        }
+        let _ = CityListViewModel(file: mock, delegate: viewModeldelegate)
+        
+        waitForExpectations(timeout: 1)
+    }
+    
     //MARK: -
-    func newViewModel(cities: [City] = City.debugArray()) -> CityListViewModel {
+    func newViewModel(cities: [City] = City.debugArray(),
+                      delegate: CityListViewModelDelegate? = nil) -> CityListViewModel {
         let mock = MockGetCityFileAsync(cities: cities)
-        return CityListViewModel(file: mock)
+        return CityListViewModel(file: mock, delegate: delegate)
     }
 }

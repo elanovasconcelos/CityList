@@ -23,6 +23,7 @@
 		0343F77C240AB9A500EA3BE9 /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343F77B240AB9A400EA3BE9 /* CityListViewModelTests.swift */; };
 		0343F77E240AB9D600EA3BE9 /* MockGetCityFileAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343F77D240AB9D600EA3BE9 /* MockGetCityFileAsync.swift */; };
 		0343F781240ABBED00EA3BE9 /* DebugExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343F780240ABBED00EA3BE9 /* DebugExtension.swift */; };
+		0343F783240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343F782240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift */; };
 		03F8BCC22405E3B6009FA31D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCC12405E3B6009FA31D /* AppDelegate.swift */; };
 		03F8BCC42405E3B6009FA31D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCC32405E3B6009FA31D /* SceneDelegate.swift */; };
 		03F8BCC62405E3B6009FA31D /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8BCC52405E3B6009FA31D /* CityListViewController.swift */; };
@@ -65,6 +66,7 @@
 		0343F77B240AB9A400EA3BE9 /* CityListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
 		0343F77D240AB9D600EA3BE9 /* MockGetCityFileAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetCityFileAsync.swift; sourceTree = "<group>"; };
 		0343F780240ABBED00EA3BE9 /* DebugExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugExtension.swift; sourceTree = "<group>"; };
+		0343F782240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCityListViewModelDelegate.swift; sourceTree = "<group>"; };
 		03F8BCBE2405E3B6009FA31D /* CityList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03F8BCC12405E3B6009FA31D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03F8BCC32405E3B6009FA31D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				03F8BCF12405F3C9009FA31D /* MockIndexable.swift */,
 				0343F77D240AB9D600EA3BE9 /* MockGetCityFileAsync.swift */,
+				0343F782240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				03F8BCEE2405F357009FA31D /* ArrayIndexTrieTests.swift in Sources */,
 				0343F781240ABBED00EA3BE9 /* DebugExtension.swift in Sources */,
 				03F8BCF22405F3C9009FA31D /* MockIndexable.swift in Sources */,
+				0343F783240BE61000EA3BE9 /* MockCityListViewModelDelegate.swift in Sources */,
 				0343F77E240AB9D600EA3BE9 /* MockGetCityFileAsync.swift in Sources */,
 				03F8BCD92405E3B9009FA31D /* CityListTests.swift in Sources */,
 				0343F77C240AB9A500EA3BE9 /* CityListViewModelTests.swift in Sources */,
