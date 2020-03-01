@@ -17,11 +17,12 @@ final class CityListViewModel: NSObject {
     private lazy var allModels = [CityCellViewModel]()
     private(set) lazy var models = Observable<[CityCellViewModel]>([])
     private let trie: ArrayIndexTrie
+    private var isReady = false //trie construction is ready
     
     weak var delegate: CityListViewModelDelegate?
     var filter: String = "" {
         didSet {
-            if oldValue != filter {
+            if oldValue != filter && isReady {
                 filterChanged()
             }
         }
@@ -59,7 +60,9 @@ final class CityListViewModel: NSObject {
         trie.insert(sortedArray: allModels) { [weak self] in
             guard let self = self else { return }
 
-            self.updateModelValue(with: self.allModels)
+            //self.updateModelValue(with: self.allModels)
+            self.isReady = true
+            self.filterChanged()
         }
     }
     

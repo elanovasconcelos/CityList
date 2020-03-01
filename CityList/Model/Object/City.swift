@@ -14,7 +14,7 @@ final class City: NSObject, Decodable {
     let id: Int
     let location: Location
     
-    init(country: String, name: String, id: Int, location: Location) {
+    init(country: String = "", name: String = "", id: Int = 0, location: Location = Location()) {
         self.country = country
         self.name = name
         self.id = id
